@@ -14,6 +14,7 @@
         return false;
     });
     
+
     
     // Sticky Navbar
     $(window).scroll(function () {
@@ -71,7 +72,8 @@
             $("#video").attr('src', $videoSrc);
         })
     });
-    
+    let a = document.getElementById('red')
+    a.style.backgroundColor='red'
     
     // Date and time picker
     $('#date').datetimepicker({
