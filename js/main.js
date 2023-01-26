@@ -71,17 +71,18 @@
   async function getItems() {
       try {
         const request = async () => {
-          const response = await fetch("http://r1ck.pythonanywhere.com/menu/");
+          const response = await fetch("https://r1ck.pythonanywhere.com/menu/");
           const json = await response.json();
           console.log(json);
           breakfastdata.push(...json)
+        
         };
         const result = await request(); // Now this will wait till it finished
         breakfastdata.forEach(
           (item) =>
           {console.log(item);
             (breakfastInnerHTML += `
-                      <div class="food-card m-4 justify-content-center" style="width:30%">
+                      <div class="food-card m-4 justify-content-center">
                           <div class="food-card_img">
                               <img src="https://r1ck.pythonanywhere.com/media/${item.fields.item_image}" alt="">
                               <a href="#!"><i class="far fa-heart"></i></a>
@@ -107,8 +108,8 @@
                                       </div>
                                       <div class="food-card_order-count">
                                           <div class="input-group mb-3">
-                                              <h5 style="align-items: center;display: flex;flex-direction:row;align-items: center;justify-content: center;">Quantity</h5>
-                                              <input type="text" class="form-control input-manulator" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="${item.fields.avilable_quantity}">
+                                              <h5 style="align-items: center;display: flex;flex-direction:row;align-items: center;justify-content: center;" >Quantity</h5>
+                                              <input type="text" class="form-control input-manulator" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="${item.fields.avilable_quantity}" disabled>
                                           </div>
                                       </div>
                                   </div>
