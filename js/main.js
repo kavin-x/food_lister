@@ -14,8 +14,10 @@
         return false;
     });
     
-
-    
+    function getdata(url){
+    fetch(url).then((data)=>console.log(data))
+    }
+    getdata('http://r1ck.pythonanywhere.com/menu')
     // Sticky Navbar
     $(window).scroll(function () {
         if ($(this).scrollTop() > 0) {
@@ -72,12 +74,11 @@
             $("#video").attr('src', $videoSrc);
         })
     });
+    let mockdata=[{quantity:5},{quantity:5},{quantity:5}]
     let a = document.getElementById('burgers')
-    a.innerHTML=`<section class="main-content">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-4">
-                <div class="food-card">
+    let data=''
+    mockdata.forEach((item)=>data+=`
+                <div class="food-card m-4 justify-content-center">
                     <div class="food-card_img">
                         <img src="https://i.imgur.com/eFWRUuR.jpg" alt="">
                         <a href="#!"><i class="far fa-heart"></i></a>
@@ -85,7 +86,7 @@
                     <div class="food-card_content">
                         <div class="food-card_title-section">
                             <a href="#!" class="food-card_title">Double Cheese Potato Burger</a>
-                            <a href="#!" class="food-card_author">Burger</a>
+                            <a href="#!" class="food-card_author">BreakFast</a>
                         </div>
                         <div class="food-card_bottom-section">
                             <div class="space-between">
@@ -93,7 +94,7 @@
                                     <span class="fa fa-fire"></span> 220 - 280 Kcal
                                 </div>
                                 <div class="pull-right">
-                                    <span class="badge badge-success">Veg</span>
+                                    <span class="badge badge-success">NonVeg</span>
                                 </div>
                             </div>
                             <hr>
@@ -103,24 +104,19 @@
                                 </div>
                                 <div class="food-card_order-count">
                                     <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary minus-btn" type="button" id="button-addon1"><i class="fa fa-minus"></i></button>
-                                        </div>
                                         <input type="text" class="form-control input-manulator" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="0">
-                                        <div class="input-group-append">
-                                            <button class="btn btn-outline-secondary add-btn" type="button" id="button-addon1"><i class="fa fa-plus"></i></button>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-`
+                </div>`)
+    a.innerHTML=`<div class="container" style="display: flex;flex-wrap: wrap;">
+    
+           ${data}
+    
+</div>
+</section>`
     
     // Date and time picker
     $('#date').datetimepicker({

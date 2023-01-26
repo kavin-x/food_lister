@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Canteen Menu</title>
+        <title>Break Zone - Fun in Dine</title>
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
         <meta content="Free Website Template" name="keywords">
         <meta content="Free Website Template" name="description">
@@ -35,6 +35,7 @@ font-family: "roboto", sans-serif;
 .main-content {
 padding-top: 100px;
 padding-bottom: 100px;
+background-color: #F47A00;
 }
 
 a {
@@ -43,6 +44,7 @@ text-decoration: none;
 
 .food-card {
 background: #fff;
+width: fit-content;
 border-radius: 5px;
 overflow: hidden;
 margin-bottom: 30px;
@@ -199,19 +201,30 @@ object-fit: cover;
 
     <body>
       <!-- Nav Bar Start -->
-      <div class="navbar navbar-expand-lg bg-light navbar-light">
+      <div class="navbar navbar-expand-lg bg-light navbar-light " style="display: flex;flex-direction: column;"> 
+        <div style="display: flex;flex-direction: row;justify-content: center;width: 100%;margin-bottom: 1%;">
+            <img src="img/emblem.jpg" alt="Image" style="height: 100px; width: 100px;">
+            <div style="height: 100px;display: flex;flex-direction: column;align-items: center;justify-content: center; margin-left: 2%;">
+                <h1 style="font-size: large;font-style: bold;font-weight: 700;">Dr.N.G.P. ARTS AND SCIENCE COLLEGE</h1>
+                <div>
+                    <h1 style="font-size: small;font-style: bold;">Autonomous | Affiliated to Bharathiar University,Coimbatore.</h1>
+                    <h1 style="font-size: small;font-style: bold;">Graded 'A++' by NAAC(Third Cycle) | Ranked SSth by NTRF</h1>
+                </div>
+            </div>
+        </div>
         <div class="container-fluid">
-            <a href="index.html" class="navbar-brand">Canteen <span>Items</span></a>
+            <a href="index.html" class="navbar-brand" style="color: black;">Break <span style="color: red;">Zone</span></a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                 <div class="navbar-nav ml-auto">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
-                   
-                    <a href="menu.html" class="nav-item nav-link">Menu</a>
+                    <a href="index.html" class="nav-item nav-link ">Home</a>
+                    <a href="about.html" class="nav-item nav-link ">About</a>
+                    
+                    <a href="menu.html" class="nav-item nav-link active">Menu</a>
+                    
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
             </div>
@@ -304,6 +317,7 @@ object-fit: cover;
                             
                         </div>
                         <div id="beverages" class="container tab-pane fade">
+                            
                         </div>
                     </div>
                 </div>
