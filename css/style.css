@@ -146,8 +146,17 @@ a:focus {
     .top{
         margin: 20px 0px;
     }
+    .head{
+        font-size: 15px;
+    }
+}
+.head{
+    font: 30px;
 }
 @media (min-width: 992px) {
+    .head{
+        font-size: 30px;
+    }
     .navbar {
         position: absolute;
         width: 100%;
