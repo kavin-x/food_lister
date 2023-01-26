@@ -142,6 +142,11 @@ a:focus {
     background: #f8f9fa;
 }
 
+@media (max-width: 500px) {
+    .top{
+        margin: 20px 0px;
+    }
+}
 @media (min-width: 992px) {
     .navbar {
         position: absolute;
@@ -149,6 +154,7 @@ a:focus {
         padding: 30px 60px;
         background: transparent !important;
         z-index: 9;
+    
     }
     
     .navbar.nav-sticky {
