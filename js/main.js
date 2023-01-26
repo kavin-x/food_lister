@@ -62,6 +62,8 @@
   //get food items
 
   let breakfastdata=[];
+  let Lunchdata=[];
+  let dinnerdata=[];
   let breakfast = document.getElementById("breakfast");
   let lunch = document.getElementById("lunch");
   let dinner = document.getElementById("dinner");
@@ -73,15 +75,106 @@
         const request = async () => {
           const response = await fetch("https://r1ck.pythonanywhere.com/menu/");
           const json = await response.json();
-          console.log(json);
-          breakfastdata.push(...json)
-        
+          let items =[...json]
+          // breakfastdata.push(...json)
+          json.forEach(element => {
+            if(element.fields.serve_type=='Breakfast')
+            {
+              breakfastdata.push(element)
+            }
+            if(element.fields.serve_type=='Lunch')
+            {
+              Lunchdata.push(element)
+            }
+            if(element.fields.serve_type=='Dinner')
+            {
+              dinnerdata.push(element)
+            }
+          });
         };
         const result = await request(); // Now this will wait till it finished
         breakfastdata.forEach(
           (item) =>
-          {console.log(item);
+          {
             (breakfastInnerHTML += `
+                      <div class="food-card m-4 justify-content-center">
+                          <div class="food-card_img">
+                              <img src="https://r1ck.pythonanywhere.com/media/${item.fields.item_image}" alt="">
+                              <a href="#!"><i class="far fa-heart"></i></a>
+                          </div>
+                          <div class="food-card_content">
+                              <div class="food-card_title-section">
+                                  <a href="#!" class="food-card_title">${item.fields.item_name}</a>
+                                  <a href="#!" class="food-card_author">${item.fields.serve_type}</a>
+                              </div>
+                              <div class="food-card_bottom-section">
+                                  <div class="space-between">
+                                      <div>
+                                          <span class="fa fa-fire"></span> 220 - 280 Kcal
+                                      </div>
+                                      <div class="pull-right">
+                                          <span class="badge badge-success">NonVeg</span>
+                                      </div>
+                                  </div>
+                                  <hr>
+                                  <div class="space-between">
+                                      <div class="food-card_price">
+                                          <span>${item.fields.price}$</span>
+                                      </div>
+                                      <div class="food-card_order-count">
+                                          <div class="input-group mb-3">
+                                              <h5 style="align-items: center;display: flex;flex-direction:row;align-items: center;justify-content: center;" >Quantity</h5>
+                                              <input type="text" class="form-control input-manulator" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="${item.fields.avilable_quantity}" disabled>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>`)}
+        );
+        Lunchdata.forEach(
+          (item) =>
+          {
+            (lunchInnerHTML += `
+                      <div class="food-card m-4 justify-content-center">
+                          <div class="food-card_img">
+                              <img src="https://r1ck.pythonanywhere.com/media/${item.fields.item_image}" alt="">
+                              <a href="#!"><i class="far fa-heart"></i></a>
+                          </div>
+                          <div class="food-card_content">
+                              <div class="food-card_title-section">
+                                  <a href="#!" class="food-card_title">${item.fields.item_name}</a>
+                                  <a href="#!" class="food-card_author">${item.fields.serve_type}</a>
+                              </div>
+                              <div class="food-card_bottom-section">
+                                  <div class="space-between">
+                                      <div>
+                                          <span class="fa fa-fire"></span> 220 - 280 Kcal
+                                      </div>
+                                      <div class="pull-right">
+                                          <span class="badge badge-success">NonVeg</span>
+                                      </div>
+                                  </div>
+                                  <hr>
+                                  <div class="space-between">
+                                      <div class="food-card_price">
+                                          <span>${item.fields.price}$</span>
+                                      </div>
+                                      <div class="food-card_order-count">
+                                          <div class="input-group mb-3">
+                                              <h5 style="align-items: center;display: flex;flex-direction:row;align-items: center;justify-content: center;" >Quantity</h5>
+                                              <input type="text" class="form-control input-manulator" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1" value="${item.fields.avilable_quantity}" disabled>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>`)}
+        );
+        dinnerdata.forEach(
+          (item) =>
+          {
+            (dinnerInnerHTML += `
                       <div class="food-card m-4 justify-content-center">
                           <div class="food-card_img">
                               <img src="https://r1ck.pythonanywhere.com/media/${item.fields.item_image}" alt="">
@@ -120,6 +213,14 @@
         
         breakfast.innerHTML = `<div class="container" style="display: flex;flex-wrap: wrap;">
                  ${breakfastInnerHTML} 
+      </div>
+      </section>`;
+      lunch.innerHTML = `<div class="container" style="display: flex;flex-wrap: wrap;">
+                 ${lunchInnerHTML} 
+      </div>
+      </section>`;
+      dinner.innerHTML = `<div class="container" style="display: flex;flex-wrap: wrap;">
+                 ${dinnerInnerHTML} 
       </div>
       </section>`;
       } catch (e) {
