@@ -64,6 +64,7 @@
   let breakfastdata=[];
   let Lunchdata=[];
   let dinnerdata=[];
+  let allItems;
   let breakfast = document.getElementById("breakfast");
   let lunch = document.getElementById("lunch");
   let dinner = document.getElementById("dinner");
@@ -74,25 +75,25 @@
       try {
         const request = async () => {
           const response = await fetch("https://r1ck.pythonanywhere.com/menu/");
-          const json = await response.json();
-          let items =[...json]
-          // breakfastdata.push(...json)
-          json.forEach(element => {
-            if(element.fields.serve_type=='Breakfast')
-            {
-              breakfastdata.push(element)
-            }
-            if(element.fields.serve_type=='Lunch')
-            {
-              Lunchdata.push(element)
-            }
-            if(element.fields.serve_type=='Dinner')
-            {
-              dinnerdata.push(element)
-            }
-          });
+          allItems = await response.json();  
         };
+      
         const result = await request(); // Now this will wait till it finished
+        allItems.forEach(element => {
+          if(element.fields.serve_type=='Breakfast')
+          {
+            breakfastdata.push(element)
+          }
+          if(element.fields.serve_type=='Lunch')
+          {
+            Lunchdata.push(element)
+          }
+          if(element.fields.serve_type=='Dinner')
+          {
+            dinnerdata.push(element)
+          }
+        });
+        console.log(Lunchdata,dinnerdata);
         breakfastdata.forEach(
           (item) =>
           {
