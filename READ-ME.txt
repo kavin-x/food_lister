@@ -1,4 +1,4 @@
-  =>  Template Name    : Burger King - Food Website Template
+  =>  Template Name    : Canteen items - 
 
   =>  Template Link    : https://htmlcodex.com/food-website-template
 
